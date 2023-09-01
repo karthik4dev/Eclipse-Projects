@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -18,7 +19,7 @@ public class ApacheReader {
 		XSSFSheet sheet= null;
 		try {
 			FileInputStream fiStream = new FileInputStream(".\\Employee.xlsx");
-			workbook=new XSSFWorkbook(fiStream);
+			workbook=(XSSFWorkbook) WorkbookFactory.create(fiStream);
 			sheet=workbook.getSheetAt(0);
 
 			int rows= sheet.getLastRowNum();
