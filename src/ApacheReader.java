@@ -2,7 +2,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -21,6 +20,8 @@ public class ApacheReader {
 			FileInputStream fiStream = new FileInputStream(".\\Employee.xlsx");
 			workbook=(XSSFWorkbook) WorkbookFactory.create(fiStream);
 			sheet=workbook.getSheetAt(0);
+			
+			
 
 			int rows= sheet.getLastRowNum();
 			int cols= sheet.getRow(1).getLastCellNum();
@@ -29,6 +30,7 @@ public class ApacheReader {
 				XSSFRow row = sheet.getRow(i);
 				for(int j=0;j<cols;j++) {
 					XSSFCell cell = row.getCell(j);
+					
 					switch (cell.getCellType()) {
 					case STRING: {
 						System.out.print(cell.getStringCellValue()+"|");
